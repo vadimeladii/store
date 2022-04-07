@@ -1,4 +1,4 @@
-package md.oop.store.config.swagger;
+package md.oop.store.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

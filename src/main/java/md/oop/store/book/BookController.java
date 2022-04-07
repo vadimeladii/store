@@ -13,27 +13,32 @@ public class BookController {
     private BookRepository bookRepository;
 
     @GetMapping
+    @CrossOrigin
     public List<Book> findAll() {
         return bookRepository.findAll();
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin
     public Book findById(@PathVariable Long id) {
         return bookRepository.findById(id);
     }
 
-    @PostMapping
-    public void save(@RequestBody Book book) {
-        bookRepository.save(book);
-    }
-
-    @DeleteMapping("/{name}")
-    public void delete(@PathVariable String name) {
-        bookRepository.delete(name);
-    }
-
-    @PutMapping("/{id}")
-    public void update(@PathVariable Long id, @RequestBody Book book) {
-        bookRepository.update(id, book);
-    }
+//    @PostMapping
+//    @CrossOrigin
+//    public void save(@RequestBody Book book) {
+//        bookRepository.save(book);
+//    }
+//
+//    @DeleteMapping("/{name}")
+//    @CrossOrigin
+//    public void delete(@PathVariable String name) {
+//        bookRepository.delete(name);
+//    }
+//
+//    @PutMapping("/{id}")
+//    @CrossOrigin
+//    public void update(@PathVariable Long id, @RequestBody Book book) {
+//        bookRepository.update(id, book);
+//    }
 }
