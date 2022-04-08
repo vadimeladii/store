@@ -2,7 +2,9 @@ package md.oop.store.book;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class BookRepository {
@@ -10,10 +12,10 @@ public class BookRepository {
 //    @Autowired
 //    private JdbcTemplate jdbcTemplate;
 
-    List<Book> books = List.of(
+    List<Book> books = new ArrayList<>(List.of(
             new Book(1L, "book1", "author1", 235),
-            new Book(1L, "book2", "author2", 500)
-    );
+            new Book(2L, "book2", "author2", 500),
+            new Book(3L, "book3", "author3", 350)));
 
     public List<Book> findAll() {
         return books;
@@ -21,6 +23,23 @@ public class BookRepository {
 
     public Book findById(Long id) {
         return books.stream().filter(book -> book.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    public void save(Book book) {
+        books.add(book);
+    }
+
+    public void delete(String name) {
+        List<Book> toRemove = books.stream().filter(book -> book.getName().equals(name)).collect(Collectors.toList());
+        books.removeAll(toRemove);
+    }
+
+    public void update(Long id, Book book) {
+        books.stream().filter(b -> b.getId().equals(id)).findFirst().ifPresent(b -> {
+            b.setAuthor(book.getAuthor());
+            b.setName(book.getName());
+            b.setNrPage(book.getNrPage());
+        });
     }
 
 //    public List<Book> findAll() {

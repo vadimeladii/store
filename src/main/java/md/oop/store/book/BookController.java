@@ -24,21 +24,21 @@ public class BookController {
         return bookRepository.findById(id);
     }
 
-//    @PostMapping
-//    @CrossOrigin
-//    public void save(@RequestBody Book book) {
-//        bookRepository.save(book);
-//    }
-//
-//    @DeleteMapping("/{name}")
-//    @CrossOrigin
-//    public void delete(@PathVariable String name) {
-//        bookRepository.delete(name);
-//    }
-//
-//    @PutMapping("/{id}")
-//    @CrossOrigin
-//    public void update(@PathVariable Long id, @RequestBody Book book) {
-//        bookRepository.update(id, book);
-//    }
+    @PostMapping
+    @CrossOrigin
+    public void save(@RequestBody Book book) {
+        bookRepository.save(book);
+    }
+
+    @PutMapping("/{id}")
+    @CrossOrigin
+    public void update(@PathVariable Long id, @RequestBody Book book) {
+        bookRepository.update(id, book);
+    }
+
+    @DeleteMapping("/{name}")
+    @CrossOrigin
+    public void delete(@PathVariable String name) {
+        bookRepository.delete(name);
+    }
 }
